@@ -20,12 +20,14 @@ while true; do
             read -r -p "Outras informações: " outras
             read -r -p "Valor Pego: " valor
             read -r -p "Valor de Vota: " dvolta
+            read -r -p "data emitida: " data
 
             # Escapa os valores para JSON usando jq
             registro=$(jq -n \
                 --arg nome "$nome" \
                 --arg nascimento "$nascimento" \
                 --arg numero "$numero" \
+                --arg data "$data" \
                 --arg outras "$outras" \
                 --arg valor "$valor" \
                 --arg dvolta " $dvolta" \
@@ -33,6 +35,7 @@ while true; do
                     nome: $nome,
                     data_nascimento: $nascimento,
                     numero: $numero,
+                    data_emitida: $data,
                     outras_informacoes: $outras,
                     valor_pego: $valor,
                     valor_volta: $dvolta
